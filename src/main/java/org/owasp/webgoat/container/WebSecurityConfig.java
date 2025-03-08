@@ -86,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
   }
 
   @Bean
@@ -103,7 +103,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @SuppressWarnings("deprecation")
   @Bean
-  public BCryptPasswordEncoder passwordEncoder() {
+  public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder;
   }
 }
